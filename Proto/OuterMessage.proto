@@ -238,4 +238,30 @@ message M2C_TransferMap // IActorLocationResponse
 	int32 Error = 91;
 	string Message = 92;
 }
- 
+
+//ResponseType R2C_TestLogin
+message C2R_TestLogin //IRequest
+{
+	int32 RpcId = 90;
+	string Account = 1;
+	string Password = 2;
+}
+
+message R2C_TestLogin //IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string GateAddress = 1;
+	string Key = 2;
+}
+
+message C2R_HellowWorld //IMessage
+{
+	string Words = 1;
+}
+
+message R2C_GoodbyeWorld //IMessage
+{
+	string Words = 1;
+}

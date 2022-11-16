@@ -1,46 +1,30 @@
-﻿namespace ET
+﻿using UnityEngine;
+using Vector3 = System.Numerics.Vector3;
+
+namespace ET
 {
     public class AppStartInitFinish_CreateLoginUI: AEvent<EventType.AppStartInitFinish>
     {
         protected override void Run(EventType.AppStartInitFinish args)
         {
             UIHelper.Create(args.ZoneScene, UIType.UILogin, UILayer.Mid).Coroutine();
-            // Test(args.ZoneScene).Coroutine();
-            Computer computer = args.ZoneScene.AddChild<Computer>();
-            Game.EventSystem.Publish(new EventType.InstallComputer() { computer = computer });
+            var t = new ETCancellationToken();
+            Move2P_Async(new Vector3(1, 3, 1), t).Coroutine();
+            t.Cancel();
         }
 
-        // public async ETTask Test(Scene zoneScene)
-        // {
-        //     Computer computer = zoneScene.AddChild<Computer>();
-        //
-        //     computer.AddComponent<PCBoxComponent>();
-        //     computer.AddComponent<MonitorComponent>();
-        //     computer.AddComponent<KeyboardComponent>();
-        //     computer.AddComponent<MouseComponent>();
-        //
-        //     computer.Start();
-        //     await TimerComponent.Instance.WaitAsync(3000);
-        //     computer.Dispose();
-        //
-        //     UnitConfig config = UnitConfigCategory.Instance.Get(1001);
-        //
-        //     Log.Debug(config.Name);
-        //
-        //     var allConfigData = UnitConfigCategory.Instance.GetAll();
-        //     foreach (var VARIABLE in allConfigData)
-        //     {
-        //         Log.Debug(VARIABLE.Value.Name);
-        //         Log.Debug("Position: " + string.Join(", ", VARIABLE.Value.Position));
-        //     }
-        //
-        //     UnitConfig heightConfig = UnitConfigCategory.Instance.GetUnitConfigByHeight(180);
-        //     Log.Debug("The 180 height person's name is " + heightConfig.Name);
-        //
-        //     foreach (var VARIABLE in UnitConfigCategory.Instance.TestVector3List)
-        //     {
-        //         Log.Debug(VARIABLE.TestVal.ToString());
-        //     }
-        // }
+        protected async ETTask Move2P_Async(Vector3 pos, ETCancellationToken t)
+        {
+            Debug.Log("move start");
+            bool ret = await TimerComponent.Instance.WaitAsync(3000, t);
+            if (ret)
+            {
+                Debug.Log("arrived");
+            }
+            else
+            {
+                Debug.Log("move cancel");
+            }
+        }
     }
 }

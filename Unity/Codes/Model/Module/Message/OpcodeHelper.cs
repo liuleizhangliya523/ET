@@ -4,11 +4,7 @@ namespace ET
 {
     public static class OpcodeHelper
     {
-        private static readonly HashSet<ushort> ignoreDebugLogMessageSet = new HashSet<ushort>
-        {
-            OuterOpcode.C2G_Ping,
-            OuterOpcode.G2C_Ping,
-        };
+        private static readonly HashSet<ushort> ignoreDebugLogMessageSet = new HashSet<ushort> { OuterOpcode.C2G_Ping, OuterOpcode.G2C_Ping, };
 
         private static bool IsNeedLogMessage(ushort opcode)
         {
@@ -36,27 +32,27 @@ namespace ET
             {
                 return;
             }
-            
+
             if (!IsNeedLogMessage(opcode))
             {
                 return;
             }
-            
+
             Log.ILog.Debug("zone: {0} {1}", zone, message);
         }
-        
+
         public static void LogMsg(ushort opcode, long actorId, object message)
         {
             if (Game.Options.Develop == 0)
             {
                 return;
             }
-            
+
             if (!IsNeedLogMessage(opcode))
             {
                 return;
             }
-            
+
             Log.ILog.Debug("actorId: {0} {1}", actorId, message);
         }
     }
