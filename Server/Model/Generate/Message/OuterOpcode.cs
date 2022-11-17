@@ -36,5 +36,9 @@ namespace ET
 		 public const ushort R2C_TestLogin = 10033;
 		 public const ushort C2R_HellowWorld = 10034;
 		 public const ushort R2C_GoodbyeWorld = 10035;
+		 public const ushort C2M_TestActorLocationRequest = 10036;
+		 public const ushort M2C_TestActorLocationResponse = 10037;
+		 public const ushort C2M_TestActionLocationMessage = 10038;
+		 public const ushort M2C_TestActorMessage = 10039;
 	}
 }
