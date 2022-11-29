@@ -7,21 +7,21 @@ namespace ET
     {
         protected override void Run(EventType.AfterUnitCreate args)
         {
-            switch (args.Unit.UnitType)
-            {
-                case UnitType.Player:
-                    break;
-                case UnitType.Monster:
-                    break;
-                case UnitType.NPC:
-                    break;
-                case UnitType.DropItem:
-                    break;
-                case UnitType.Box:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            // switch (args.Unit.UnitType)
+            // {
+            //     case UnitType.Player:
+            //         break;
+            //     case UnitType.Monster:
+            //         break;
+            //     case UnitType.NPC:
+            //         break;
+            //     case UnitType.DropItem:
+            //         break;
+            //     case UnitType.Box:
+            //         break;
+            //     default:
+            //         throw new ArgumentOutOfRangeException();
+            // }
 
             // Unit View层
             // 这里可以改成异步加载，demo就不搞了

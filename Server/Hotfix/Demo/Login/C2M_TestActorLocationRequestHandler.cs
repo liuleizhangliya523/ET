@@ -7,7 +7,7 @@ namespace ET
     {
         protected override async ETTask Run(Unit unit, C2M_TestActorLocationRequest request, M2C_TestActorLocationResponse response, Action reply)
         {
-            Log.Debug("服务器收到C2M_TestActorLocationRequest");
+            Log.Debug("服务器收到C2M_TestActorLocationRequest:" + request.Content);
             response.Content = "Server已收到C2M_TestActorLocationRequest！";
             reply();
             await ETTask.CompletedTask;
